@@ -5,17 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CRYPTO//NEXUS — Crypto Intelligence Network</title>
 
-<!-- =========================================================
-     CRYPTO//NEXUS
-     SINGLE FILE CRYPTO INFORMATION WEBSITE
-     GitHub Pages + Supabase Ready
-     ========================================================= -->
-
 <style>
-/* =========================================================
-   GLOBAL
-   ========================================================= */
-
 :root{
     --bg:#03070b;
     --bg2:#071018;
@@ -53,8 +43,6 @@ body{
     overflow-x:hidden;
 }
 
-/* GRID BACKGROUND */
-
 body::before{
     content:"";
     position:fixed;
@@ -68,8 +56,6 @@ body::before{
     mask-image:linear-gradient(to bottom,black,transparent);
     z-index:-3;
 }
-
-/* MATRIX */
 
 .matrix{
     position:fixed;
@@ -90,14 +76,8 @@ body::before{
 }
 
 @keyframes matrixFall{
-    to{
-        transform:translateY(120vh);
-    }
+    to{transform:translateY(120vh);}
 }
-
-/* =========================================================
-   HEADER
-   ========================================================= */
 
 header{
     height:72px;
@@ -190,9 +170,15 @@ header{
     color:var(--green);
 }
 
-/* =========================================================
-   HERO
-   ========================================================= */
+.btn-danger{
+    border-color:var(--red);
+    color:var(--red);
+}
+
+.btn-warning{
+    border-color:var(--yellow);
+    color:var(--yellow);
+}
 
 main{
     max-width:1450px;
@@ -247,8 +233,6 @@ main{
     margin-top:30px;
     flex-wrap:wrap;
 }
-
-/* BLOCKCHAIN VISUAL */
 
 .blockchain{
     height:350px;
@@ -308,10 +292,6 @@ main{
     to{opacity:1;transform:scale(1.4)}
 }
 
-/* =========================================================
-   TICKER
-   ========================================================= */
-
 .ticker{
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
@@ -337,22 +317,13 @@ main{
     color:var(--cyan);
 }
 
-.up{
-    color:var(--green);
-}
-
-.down{
-    color:var(--red);
-}
+.up{color:var(--green)}
+.down{color:var(--red)}
 
 @keyframes tickerMove{
     from{transform:translateX(0)}
     to{transform:translateX(-50%)}
 }
-
-/* =========================================================
-   SECTION
-   ========================================================= */
 
 .section{
     margin-top:65px;
@@ -382,10 +353,6 @@ main{
     font-size:12px;
     margin-top:7px;
 }
-
-/* =========================================================
-   MARKET GRID
-   ========================================================= */
 
 .market-grid{
     display:grid;
@@ -464,10 +431,6 @@ main{
     height:100%;
 }
 
-/* =========================================================
-   NEWS
-   ========================================================= */
-
 .news-layout{
     display:grid;
     grid-template-columns:1.5fr .8fr;
@@ -491,6 +454,14 @@ main{
 .news-card:hover{
     border-color:rgba(0,217,255,.5);
     transform:translateY(-3px);
+}
+
+.news-image{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    margin-bottom:15px;
+    border:1px solid var(--line);
 }
 
 .news-category{
@@ -551,16 +522,48 @@ main{
     box-shadow:0 0 8px var(--green);
 }
 
-/* =========================================================
-   DASHBOARD
-   ========================================================= */
-
-.dashboard{
+.admin{
     display:none;
 }
 
-.dashboard.active{
+.admin.active{
     display:block;
+}
+
+.admin-grid{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    border:1px solid var(--line);
+    min-height:650px;
+    background:var(--panel);
+}
+
+.admin-sidebar{
+    border-right:1px solid var(--line);
+    padding:15px;
+}
+
+.admin-sidebar button{
+    width:100%;
+    text-align:left;
+    padding:14px;
+    margin-bottom:4px;
+    border:0;
+    background:transparent;
+    color:#718c98;
+    font-family:monospace;
+    cursor:pointer;
+}
+
+.admin-sidebar button:hover,
+.admin-sidebar button.active{
+    color:var(--green);
+    background:rgba(0,255,156,.04);
+}
+
+.admin-content{
+    padding:25px;
+    min-width:0;
 }
 
 .dashboard-grid{
@@ -587,63 +590,25 @@ main{
     margin-top:10px;
 }
 
-/* =========================================================
-   ADMIN
-   ========================================================= */
-
-.admin{
-    display:none;
-}
-
-.admin.active{
-    display:block;
-}
-
-.admin-grid{
-    display:grid;
-    grid-template-columns:240px 1fr;
+.admin-table-wrap{
+    overflow-x:auto;
     border:1px solid var(--line);
-    min-height:600px;
-    background:var(--panel);
-}
-
-.admin-sidebar{
-    border-right:1px solid var(--line);
-    padding:15px;
-}
-
-.admin-sidebar button{
-    width:100%;
-    text-align:left;
-    padding:14px;
-    margin-bottom:4px;
-    border:0;
-    background:transparent;
-    color:#718c98;
-    font-family:monospace;
-    cursor:pointer;
-}
-
-.admin-sidebar button:hover{
-    color:var(--green);
-    background:rgba(0,255,156,.04);
-}
-
-.admin-content{
-    padding:25px;
+    margin-top:20px;
 }
 
 .admin-table{
     width:100%;
     border-collapse:collapse;
     font-size:11px;
+    min-width:850px;
 }
 
 .admin-table th,
 .admin-table td{
     border-bottom:1px solid var(--line);
-    padding:14px 8px;
+    padding:13px 8px;
     text-align:left;
+    vertical-align:middle;
 }
 
 .admin-table th{
@@ -651,55 +616,72 @@ main{
     font-family:monospace;
 }
 
-/* =========================================================
-   MODAL
-   ========================================================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(8px);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:3000;
-    padding:20px;
+.status-badge{
+    display:inline-block;
+    padding:5px 8px;
+    border:1px solid var(--line);
+    font:9px monospace;
 }
 
-.modal.show{
-    display:flex;
-}
-
-.modal-box{
-    width:420px;
-    max-width:100%;
-    background:#071118;
-    border:1px solid var(--green);
-    box-shadow:0 0 50px rgba(0,255,156,.12);
-    padding:30px;
-    position:relative;
-}
-
-.modal-title{
-    font-family:monospace;
+.status-published{
     color:var(--green);
-    margin-bottom:25px;
+    border-color:rgba(0,255,156,.4);
 }
 
-.close{
-    position:absolute;
-    right:20px;
-    top:17px;
-    border:0;
-    background:none;
-    color:#789;
-    cursor:pointer;
-    font-size:20px;
+.status-draft{
+    color:var(--yellow);
+    border-color:rgba(255,216,77,.4);
+}
+
+.status-archived{
+    color:var(--muted);
+}
+
+.admin-actions{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    padding:7px 9px;
+    font-size:9px;
+}
+
+.search-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.search-row input,
+.search-row select{
+    background:#03090d;
+    border:1px solid var(--line);
+    color:white;
+    padding:11px;
+    outline:none;
+    font-family:monospace;
+}
+
+.search-row input{
+    flex:1;
+    min-width:200px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
 .form-group{
     margin-bottom:15px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
 }
 
 .form-group label{
@@ -721,45 +703,110 @@ main{
     font-family:monospace;
 }
 
+.form-group textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus{
     border-color:var(--green);
 }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
-
-footer{
-    border-top:1px solid var(--line);
-    padding:35px 25px;
-    margin-top:50px;
+.check-row{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    margin:10px 0 20px;
 }
 
-.footer-inner{
-    max-width:1450px;
-    margin:auto;
+.check-row label{
+    color:#9bb3bd;
+    font:11px monospace;
+    cursor:pointer;
+}
+
+.check-row input{
+    margin-right:6px;
+}
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(8px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+    padding:20px;
+}
+
+.modal.show{
     display:flex;
-    justify-content:space-between;
-    gap:20px;
+}
+
+.modal-box{
+    width:500px;
+    max-width:100%;
+    max-height:90vh;
+    overflow:auto;
+    background:#071118;
+    border:1px solid var(--green);
+    box-shadow:0 0 50px rgba(0,255,156,.12);
+    padding:30px;
+    position:relative;
+}
+
+.modal-large{
+    width:850px;
+}
+
+.modal-title{
+    font-family:monospace;
+    color:var(--green);
+    margin-bottom:25px;
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:17px;
+    border:0;
+    background:none;
+    color:#789;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.form-buttons{
+    display:flex;
+    gap:10px;
+    justify-content:flex-end;
+    margin-top:20px;
     flex-wrap:wrap;
 }
 
-.footer-logo{
+.alert{
+    padding:12px;
+    border:1px solid var(--line);
+    background:#03090d;
+    color:var(--muted);
+    font:10px monospace;
+    line-height:1.6;
+    margin-bottom:15px;
+}
+
+.alert.success{
+    border-color:rgba(0,255,156,.4);
     color:var(--green);
-    font-family:monospace;
 }
 
-.footer-text{
-    color:#506873;
-    font-size:10px;
-    line-height:1.8;
+.alert.error{
+    border-color:rgba(255,56,100,.5);
+    color:var(--red);
 }
-
-/* =========================================================
-   TERMINAL
-   ========================================================= */
 
 .terminal{
     border:1px solid var(--line);
@@ -791,9 +838,31 @@ footer{
     50%{opacity:0}
 }
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+footer{
+    border-top:1px solid var(--line);
+    padding:35px 25px;
+    margin-top:50px;
+}
+
+.footer-inner{
+    max-width:1450px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.footer-logo{
+    color:var(--green);
+    font-family:monospace;
+}
+
+.footer-text{
+    color:#506873;
+    font-size:10px;
+    line-height:1.8;
+}
 
 .mobile-menu{
     display:none;
@@ -802,6 +871,13 @@ footer{
     color:var(--green);
     padding:8px 12px;
     cursor:pointer;
+}
+
+.loading{
+    padding:30px;
+    text-align:center;
+    color:var(--muted);
+    font:11px monospace;
 }
 
 @media(max-width:1050px){
@@ -866,14 +942,8 @@ footer{
         font-size:42px;
     }
 
-    .market-grid{
-        grid-template-columns:1fr;
-    }
-
-    .news-main{
-        grid-template-columns:1fr;
-    }
-
+    .market-grid,
+    .news-main,
     .dashboard-grid{
         grid-template-columns:1fr;
     }
@@ -886,18 +956,21 @@ footer{
         border-right:0;
         border-bottom:1px solid var(--line);
     }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- MATRIX -->
 <div class="matrix" id="matrix"></div>
-
-<!-- =========================================================
-     HEADER
-     ========================================================= -->
 
 <header>
 <div class="nav">
@@ -925,17 +998,9 @@ footer{
 </div>
 </header>
 
-<!-- =========================================================
-     TICKER
-     ========================================================= -->
-
 <div class="ticker">
 <div class="ticker-track" id="tickerTrack"></div>
 </div>
-
-<!-- =========================================================
-     MAIN
-     ========================================================= -->
 
 <main id="homePage">
 
@@ -974,15 +1039,12 @@ footer{
             <div class="terminal-line">
                 <span>root@crypto-nexus:</span>~$ initialize_market
             </div>
-
             <div class="terminal-line">
                 loading blockchain nodes...
             </div>
-
             <div class="terminal-line">
                 connecting market feeds...
             </div>
-
             <div class="terminal-line">
                 status: <span>ONLINE</span>
                 <span class="cursor"></span>
@@ -1004,10 +1066,6 @@ footer{
 
 </section>
 
-<!-- =========================================================
-     MARKET
-     ========================================================= -->
-
 <section class="section" id="market">
 
     <div class="section-header">
@@ -1025,15 +1083,9 @@ footer{
 
     </div>
 
-    <div class="market-grid" id="marketGrid">
-        <!-- Generated by JavaScript -->
-    </div>
+    <div class="market-grid" id="marketGrid"></div>
 
 </section>
-
-<!-- =========================================================
-     NEWS
-     ========================================================= -->
 
 <section class="section" id="news">
 
@@ -1042,7 +1094,7 @@ footer{
         <div>
             <div class="section-title">CRYPTO INTELLIGENCE</div>
             <div class="section-description">
-                Latest stories from the digital asset ecosystem
+                Latest published stories from CRYPTO//NEXUS
             </div>
         </div>
 
@@ -1055,7 +1107,7 @@ footer{
     <div class="news-layout">
 
         <div class="news-main" id="newsGrid">
-            <!-- Generated by JavaScript -->
+            <div class="loading">LOADING NEWS...</div>
         </div>
 
         <aside class="news-sidebar">
@@ -1071,10 +1123,6 @@ footer{
     </div>
 
 </section>
-
-<!-- =========================================================
-     TERMINAL STATUS
-     ========================================================= -->
 
 <section class="section">
 
@@ -1093,11 +1141,11 @@ footer{
 </div>
 
 <div class="terminal-line">
-<span>[NEWS]</span> Intelligence feed connected
+<span>[NEWS]</span> Supabase news engine connected
 </div>
 
 <div class="terminal-line">
-<span>[SECURITY]</span> Supabase authentication layer ready
+<span>[SECURITY]</span> Supabase authentication and RLS active
 </div>
 
 </div>
@@ -1105,10 +1153,6 @@ footer{
 </section>
 
 </main>
-
-<!-- =========================================================
-     FAVORITES PAGE
-     ========================================================= -->
 
 <main id="favoritesPage" style="display:none">
 
@@ -1128,10 +1172,6 @@ Your personal cryptocurrency watchlist
 </section>
 
 </main>
-
-<!-- =========================================================
-     ADMIN PAGE
-     ========================================================= -->
 
 <main id="adminPage" style="display:none">
 
@@ -1158,20 +1198,28 @@ Crypto Nexus administration console
 
 <aside class="admin-sidebar">
 
-<button onclick="adminPanel('overview')">
+<button class="active" onclick="adminPanel('overview',this)">
 01 // OVERVIEW
 </button>
 
-<button onclick="adminPanel('news')">
+<button onclick="adminPanel('news',this)">
 02 // NEWS
 </button>
 
-<button onclick="adminPanel('users')">
-03 // USERS
+<button onclick="adminPanel('categories',this)">
+03 // CATEGORIES
 </button>
 
-<button onclick="adminPanel('settings')">
-04 // SETTINGS
+<button onclick="adminPanel('users',this)">
+04 // USERS
+</button>
+
+<button onclick="adminPanel('settings',this)">
+05 // SETTINGS
+</button>
+
+<button onclick="adminPanel('logs',this)">
+06 // ADMIN LOGS
 </button>
 
 </aside>
@@ -1191,13 +1239,29 @@ Crypto Nexus administration console
 </div>
 
 <div class="stat">
-<div class="stat-label">MARKET STATUS</div>
-<div class="stat-value">LIVE</div>
+<div class="stat-label">PUBLISHED</div>
+<div class="stat-value" id="adminPublished">--</div>
 </div>
 
 <div class="stat">
-<div class="stat-label">SYSTEM</div>
-<div class="stat-value">ONLINE</div>
+<div class="stat-label">DRAFTS</div>
+<div class="stat-value" id="adminDrafts">--</div>
+</div>
+
+</div>
+
+<div class="terminal">
+
+<div class="terminal-line">
+<span>ADMIN:</span> Database connection active
+</div>
+
+<div class="terminal-line">
+<span>ROLE:</span> Administrator
+</div>
+
+<div class="terminal-line">
+<span>RLS:</span> Protected
 </div>
 
 </div>
@@ -1214,17 +1278,13 @@ Crypto Nexus administration console
 
 </main>
 
-<!-- =========================================================
-     AUTH MODAL
-     ========================================================= -->
+<!-- AUTH MODAL -->
 
 <div class="modal" id="authModal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeModal('authModal')">
-×
-</button>
+<button class="close" onclick="closeModal('authModal')">×</button>
 
 <div class="modal-title" id="authTitle">
 AUTHENTICATION
@@ -1278,1291 +1338,116 @@ Create new account
 
 </div>
 
-<div
-id="authMessage"
-style="
-margin-top:15px;
-font:10px monospace;
-color:#71909d;
-line-height:1.6;
-">
+<div id="authMessage"
+style="margin-top:15px;font:10px monospace;color:#71909d;line-height:1.6;">
 </div>
 
 </div>
 
 </div>
 
-<!-- =========================================================
-     JAVASCRIPT
-     ========================================================= -->
+<!-- NEWS MODAL -->
 
-<script>
+<div class="modal" id="newsModal">
 
-/* =========================================================
-   CONFIGURATION
-   ========================================================= */
+<div class="modal-box modal-large">
 
-/*
- IMPORTANT:
+<button class="close" onclick="closeModal('newsModal')">×</button>
 
- Replace these with your Supabase PROJECT values.
+<div class="modal-title" id="newsModalTitle">
+CREATE NEWS STORY
+</div>
 
- NEVER put the Supabase service_role key here.
+<div id="newsFormMessage"></div>
 
- Only use the browser-safe publishable/anon key.
+<form id="newsForm" onsubmit="saveNews(event)">
 
-*/
+<input type="hidden" id="newsId">
 
-const SUPABASE_URL = "https://mmwcqrssgfmlunpzkghl.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_hyvqdNDdX-NGg-B7KMzD1A_KxmzMsvW";
+<div class="form-grid">
 
-/*
- Optional external market API.
+<div class="form-group">
+<label>TITLE</label>
+<input id="newsTitle" required>
+</div>
 
- The demo interface works without it.
+<div class="form-group">
+<label>SLUG</label>
+<input id="newsSlug" placeholder="automatic-if-empty">
+</div>
 
- For production, connect your preferred market API.
-*/
+<div class="form-group">
+<label>CATEGORY</label>
+<select id="newsCategory"></select>
+</div>
 
-const MARKET_API =
-"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false";
+<div class="form-group">
+<label>STATUS</label>
+<select id="newsStatus">
+<option value="draft">DRAFT</option>
+<option value="published">PUBLISHED</option>
+<option value="archived">ARCHIVED</option>
+</select>
+</div>
 
-/* =========================================================
-   APPLICATION STATE
-   ========================================================= */
+<div class="form-group">
+<label>SOURCE NAME</label>
+<input id="newsSourceName">
+</div>
 
-let currentUser = null;
+<div class="form-group">
+<label>SOURCE URL</label>
+<input id="newsSourceUrl" type="url" placeholder="https://example.com">
+</div>
 
-let authMode = "login";
+<div class="form-group full">
+<label>IMAGE URL</label>
+<input id="newsImageUrl" type="url" placeholder="https://...">
+</div>
 
-let favorites = JSON.parse(
-    localStorage.getItem("cryptoFavorites") || "[]"
-);
+<div class="form-group full">
+<label>EXCERPT</label>
+<textarea id="newsExcerpt"></textarea>
+</div>
 
-let marketData = [];
+<div class="form-group full">
+<label>FULL ARTICLE CONTENT</label>
+<textarea id="newsContent" style="min-height:260px"></textarea>
+</div>
 
-/* =========================================================
-   DEMO MARKET DATA
-   ========================================================= */
+</div>
 
-const fallbackCoins = [
+<div class="check-row">
 
-{
-    id:"bitcoin",
-    name:"Bitcoin",
-    symbol:"BTC",
-    current_price:118420,
-    price_change_percentage_24h:2.31
-},
+<label>
+<input type="checkbox" id="newsFeatured">
+FEATURED
+</label>
 
-{
-    id:"ethereum",
-    name:"Ethereum",
-    symbol:"ETH",
-    current_price:4620,
-    price_change_percentage_24h:1.82
-},
+<label>
+<input type="checkbox" id="newsBreaking">
+BREAKING
+</label>
 
-{
-    id:"tether",
-    name:"Tether",
-    symbol:"USDT",
-    current_price:1,
-    price_change_percentage_24h:0.01
-},
+</div>
 
-{
-    id:"binancecoin",
-    name:"BNB",
-    symbol:"BNB",
-    current_price:824,
-    price_change_percentage_24h:-0.43
-},
+<div class="form-buttons">
 
-{
-    id:"solana",
-    name:"Solana",
-    symbol:"SOL",
-    current_price:198,
-    price_change_percentage_24h:-0.72
-},
+<button type="button" class="btn" onclick="closeModal('newsModal')">
+CANCEL
+</button>
 
-{
-    id:"ripple",
-    name:"XRP",
-    symbol:"XRP",
-    current_price:3.12,
-    price_change_percentage_24h:4.21
-},
+<button type="submit" class="btn btn-primary">
+SAVE NEWS
+</button>
 
-{
-    id:"dogecoin",
-    name:"Dogecoin",
-    symbol:"DOGE",
-    current_price:.24,
-    price_change_percentage_24h:2.92
-},
+</div>
 
-{
-    id:"cardano",
-    name:"Cardano",
-    symbol:"ADA",
-    current_price:.91,
-    price_change_percentage_24h:-1.12
-}
+</form>
 
-];
+</div>
 
-/* =========================================================
-   INITIALIZATION
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded",async()=>{
-
-    createMatrix();
-
-    marketData = fallbackCoins;
-
-    renderMarket();
-
-    renderTicker();
-
-    loadNews();
-
-    renderFavorites();
-
-    setupSupabase();
-
-    await restoreSession();
-
-});
-
-/* =========================================================
-   MATRIX
-   ========================================================= */
-
-function createMatrix(){
-
-    const matrix = document.getElementById("matrix");
-
-    const chars =
-        "01010110100101010101011001100110101";
-
-    for(let i=0;i<65;i++){
-
-        const span=document.createElement("span");
-
-        span.textContent =
-            Array.from({length:Math.floor(Math.random()*20)+8},
-            ()=>chars[Math.floor(Math.random()*chars.length)])
-            .join("");
-
-        span.style.left =
-            Math.random()*100+"%";
-
-        span.style.animationDuration =
-            (Math.random()*8+5)+"s";
-
-        span.style.animationDelay =
-            -(Math.random()*10)+"s";
-
-        matrix.appendChild(span);
-    }
-}
-
-/* =========================================================
-   MARKET
-   ========================================================= */
-
-async function refreshMarket(){
-
-    try{
-
-        const response = await fetch(MARKET_API);
-
-        if(!response.ok){
-            throw new Error("Market API unavailable");
-        }
-
-        const data = await response.json();
-
-        if(Array.isArray(data) && data.length){
-
-            marketData = data.slice(0,20);
-
-        }
-
-    }catch(error){
-
-        console.log("Using fallback market data.");
-
-    }
-
-    renderMarket();
-    renderTicker();
-    renderFavorites();
-
-}
-
-/* =========================================================
-   RENDER MARKET
-   ========================================================= */
-
-function renderMarket(){
-
-    const grid =
-        document.getElementById("marketGrid");
-
-    if(!grid)return;
-
-    grid.innerHTML="";
-
-    marketData.slice(0,12).forEach(coin=>{
-
-        const change =
-            Number(coin.price_change_percentage_24h || 0);
-
-        const isFavorite =
-            favorites.includes(coin.id);
-
-        const card=document.createElement("div");
-
-        card.className="coin-card";
-
-        card.innerHTML=`
-
-            <div class="coin-top">
-
-                <div>
-
-                    <div class="coin-name">
-                        ${escapeHTML(coin.name)}
-                    </div>
-
-                    <div class="coin-symbol">
-                        ${escapeHTML(
-                            String(coin.symbol || "").toUpperCase()
-                        )}
-                    </div>
-
-                </div>
-
-                <button
-                    class="favorite ${isFavorite ? "active":""}"
-                    onclick="toggleFavorite('${escapeAttr(coin.id)}')">
-
-                    ${isFavorite ? "★":"☆"}
-
-                </button>
-
-            </div>
-
-            <div class="coin-price">
-                ${formatUSD(coin.current_price)}
-            </div>
-
-            <div class="coin-change ${change>=0?"up":"down"}">
-
-                ${change>=0?"▲":"▼"}
-                ${Math.abs(change).toFixed(2)}%
-
-                <span style="color:#506873">
-                    24H
-                </span>
-
-            </div>
-
-            <div class="mini-chart">
-
-                <svg viewBox="0 0 200 45"
-                     preserveAspectRatio="none">
-
-                    <polyline
-                        points="0,35 20,30 40,37 60,21 80,27 100,15 120,24 140,12 160,20 180,9 200,14"
-                        fill="none"
-                        stroke="${change>=0 ?
-                        "rgba(0,255,156,.65)":
-                        "rgba(255,56,100,.65)"}"
-                        stroke-width="1.5"/>
-
-                </svg>
-
-            </div>
-
-        `;
-
-        grid.appendChild(card);
-
-    });
-
-}
-
-/* =========================================================
-   TICKER
-   ========================================================= */
-
-function renderTicker(){
-
-    const track =
-        document.getElementById("tickerTrack");
-
-    if(!track)return;
-
-    const items =
-        [...marketData.slice(0,10),...marketData.slice(0,10)];
-
-    track.innerHTML="";
-
-    items.forEach(coin=>{
-
-        const change =
-            Number(coin.price_change_percentage_24h || 0);
-
-        const item=document.createElement("div");
-
-        item.className="ticker-item";
-
-        item.innerHTML=`
-
-            <span class="ticker-symbol">
-                ${escapeHTML(
-                    String(coin.symbol || "").toUpperCase()
-                )}
-            </span>
-
-            &nbsp;
-
-            ${formatUSD(coin.current_price)}
-
-            &nbsp;
-
-            <span class="${change>=0?"up":"down"}">
-                ${change>=0?"+":""}${change.toFixed(2)}%
-            </span>
-
-        `;
-
-        track.appendChild(item);
-
-    });
-
-}
-
-/* =========================================================
-   FAVORITES
-   ========================================================= */
-
-function toggleFavorite(id){
-
-    if(!currentUser){
-
-        openAuth("login");
-
-        showAuthMessage(
-            "LOGIN REQUIRED // Connect your account to save favorites."
-        );
-
-        return;
-
-    }
-
-    if(favorites.includes(id)){
-
-        favorites =
-            favorites.filter(item=>item!==id);
-
-    }else{
-
-        favorites.push(id);
-
-    }
-
-    localStorage.setItem(
-        "cryptoFavorites",
-        JSON.stringify(favorites)
-    );
-
-    renderMarket();
-    renderFavorites();
-
-    /*
-      Production Supabase:
-
-      Save favorites into the user_favorites table here.
-    */
-
-}
-
-function renderFavorites(){
-
-    const container =
-        document.getElementById("favoritesContainer");
-
-    if(!container)return;
-
-    if(!currentUser){
-
-        container.innerHTML=`
-
-            <div class="terminal">
-
-                <div class="terminal-line">
-                    <span>ACCESS DENIED</span>
-                </div>
-
-                <div class="terminal-line">
-                    Authentication required.
-                </div>
-
-                <button
-                    class="btn btn-primary"
-                    onclick="openAuth('login')"
-                    style="margin-top:15px">
-
-                    CONNECT ACCOUNT
-
-                </button>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    const coins =
-        marketData.filter(
-            coin=>favorites.includes(coin.id)
-        );
-
-    if(!coins.length){
-
-        container.innerHTML=`
-
-            <div class="terminal">
-
-                <div class="terminal-line">
-                    <span>WATCHLIST EMPTY</span>
-                </div>
-
-                <div class="terminal-line">
-                    Add cryptocurrencies from the market.
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-    container.innerHTML=`
-
-        <div class="market-grid">
-
-            ${coins.map(coin=>{
-
-                const change =
-                    Number(
-                        coin.price_change_percentage_24h || 0
-                    );
-
-                return `
-
-                    <div class="coin-card">
-
-                        <div class="coin-name">
-                            ${escapeHTML(coin.name)}
-                        </div>
-
-                        <div class="coin-symbol">
-                            ${escapeHTML(
-                                String(coin.symbol).toUpperCase()
-                            )}
-                        </div>
-
-                        <div class="coin-price">
-                            ${formatUSD(coin.current_price)}
-                        </div>
-
-                        <div class="${change>=0?"up":"down"}">
-                            ${change>=0?"+":""}
-                            ${change.toFixed(2)}%
-                        </div>
-
-                    </div>
-
-                `;
-
-            }).join("")}
-
-        </div>
-
-    `;
-
-}
-
-/* =========================================================
-   NEWS
-   ========================================================= */
-
-const fallbackNews=[
-
-{
-    category:"BITCOIN",
-    title:"Bitcoin market remains at the center of global digital asset activity",
-    description:"Market participants continue monitoring liquidity, institutional flows and broader macroeconomic conditions.",
-    time:"Today"
-},
-
-{
-    category:"ETHEREUM",
-    title:"Ethereum ecosystem continues expanding its decentralized infrastructure",
-    description:"Developers and applications continue building across the Ethereum ecosystem.",
-    time:"Today"
-},
-
-{
-    category:"REGULATION",
-    title:"Global crypto regulation remains a major market theme",
-    description:"Digital asset companies and investors continue watching regulatory developments across major jurisdictions.",
-    time:"Today"
-},
-
-{
-    category:"BLOCKCHAIN",
-    title:"Blockchain infrastructure continues moving toward mainstream adoption",
-    description:"New applications are expanding blockchain technology beyond traditional cryptocurrency markets.",
-    time:"Today"
-}
-
-];
-
-function loadNews(){
-
-    const grid =
-        document.getElementById("newsGrid");
-
-    const live =
-        document.getElementById("liveFeed");
-
-    if(!grid || !live)return;
-
-    grid.innerHTML="";
-
-    fallbackNews.forEach(news=>{
-
-        const card =
-            document.createElement("article");
-
-        card.className="news-card";
-
-        card.innerHTML=`
-
-            <div class="news-category">
-                ${escapeHTML(news.category)}
-            </div>
-
-            <h3>
-                ${escapeHTML(news.title)}
-            </h3>
-
-            <p>
-                ${escapeHTML(news.description)}
-            </p>
-
-            <div class="news-meta">
-                <span>CRYPTO//NEXUS</span>
-                <span>${escapeHTML(news.time)}</span>
-            </div>
-
-        `;
-
-        grid.appendChild(card);
-
-    });
-
-    live.innerHTML="";
-
-    fallbackNews.forEach(news=>{
-
-        const item =
-            document.createElement("div");
-
-        item.className="live-item";
-
-        item.innerHTML=`
-
-            <span class="live-dot"></span>
-            ${escapeHTML(news.title)}
-
-        `;
-
-        live.appendChild(item);
-
-    });
-
-}
-
-/* =========================================================
-   AUTHENTICATION
-   ========================================================= */
-
-function openAuth(mode){
-
-    authMode=mode;
-
-    document
-        .getElementById("authModal")
-        .classList.add("show");
-
-    updateAuthUI();
-
-}
-
-function closeModal(id){
-
-    document
-        .getElementById(id)
-        .classList.remove("show");
-
-}
-
-function toggleAuthMode(){
-
-    authMode =
-        authMode==="login" ? "signup":"login";
-
-    updateAuthUI();
-
-}
-
-function updateAuthUI(){
-
-    const title =
-        document.getElementById("authTitle");
-
-    const submit =
-        document.getElementById("authSubmit");
-
-    const toggle =
-        document.getElementById("authToggle");
-
-    if(authMode==="login"){
-
-        title.textContent =
-            "AUTHENTICATE // LOGIN";
-
-        submit.textContent =
-            "CONNECT TO NETWORK";
-
-        toggle.textContent =
-            "Create new account";
-
-    }else{
-
-        title.textContent =
-            "CREATE // ACCOUNT";
-
-        submit.textContent =
-            "CREATE ACCOUNT";
-
-        toggle.textContent =
-            "Already have an account? Login";
-
-    }
-
-    showAuthMessage("");
-
-}
-
-async function handleAuth(event){
-
-    event.preventDefault();
-
-    const email =
-        document.getElementById("authEmail").value.trim();
-
-    const password =
-        document.getElementById("authPassword").value;
-
-    if(
-        SUPABASE_URL==="YOUR_SUPABASE_URL" ||
-        SUPABASE_ANON_KEY==="YOUR_SUPABASE_ANON_KEY"
-    ){
-
-        /*
-          Demo mode
-        */
-
-        currentUser={
-            id:"demo-user",
-            email:email
-        };
-
-        localStorage.setItem(
-            "demoUser",
-            JSON.stringify(currentUser)
-        );
-
-        closeModal("authModal");
-
-        updateUserUI();
-
-        return;
-
-    }
-
-    try{
-
-        showAuthMessage(
-            "CONNECTING TO SUPABASE..."
-        );
-
-        let response;
-
-        if(authMode==="signup"){
-
-            response =
-                await fetch(
-                    SUPABASE_URL+
-                    "/auth/v1/signup",
-                    {
-                        method:"POST",
-                        headers:{
-                            "apikey":SUPABASE_ANON_KEY,
-                            "Content-Type":"application/json"
-                        },
-                        body:JSON.stringify({
-                            email,
-                            password
-                        })
-                    }
-                );
-
-        }else{
-
-            response =
-                await fetch(
-                    SUPABASE_URL+
-                    "/auth/v1/token?grant_type=password",
-                    {
-                        method:"POST",
-                        headers:{
-                            "apikey":SUPABASE_ANON_KEY,
-                            "Content-Type":"application/json"
-                        },
-                        body:JSON.stringify({
-                            email,
-                            password
-                        })
-                    }
-                );
-
-        }
-
-        const data=await response.json();
-
-        if(!response.ok){
-
-            throw new Error(
-                data.error_description ||
-                data.msg ||
-                "Authentication failed"
-            );
-
-        }
-
-        if(authMode==="signup"){
-
-            showAuthMessage(
-                "ACCOUNT CREATED // Check your email if confirmation is enabled."
-            );
-
-            return;
-
-        }
-
-        currentUser=data.user;
-
-        localStorage.setItem(
-            "supabaseSession",
-            JSON.stringify(data)
-        );
-
-        closeModal("authModal");
-
-        updateUserUI();
-
-    }catch(error){
-
-        showAuthMessage(
-            "ERROR // "+error.message
-        );
-
-    }
-
-}
-
-async function restoreSession(){
-
-    const demo =
-        localStorage.getItem("demoUser");
-
-    if(demo){
-
-        try{
-            currentUser=JSON.parse(demo);
-        }catch(e){}
-
-    }
-
-    const stored =
-        localStorage.getItem("supabaseSession");
-
-    if(stored){
-
-        try{
-
-            const session =
-                JSON.parse(stored);
-
-            if(session.user){
-
-                currentUser=session.user;
-
-            }
-
-        }catch(e){}
-
-    }
-
-    updateUserUI();
-
-}
-
-function logout(){
-
-    currentUser=null;
-
-    localStorage.removeItem("demoUser");
-    localStorage.removeItem("supabaseSession");
-
-    updateUserUI();
-
-    showPage("home");
-
-}
-
-function updateUserUI(){
-
-    const login =
-        document.getElementById("loginButton");
-
-    const signup =
-        document.getElementById("signupButton");
-
-    const logoutBtn =
-        document.getElementById("logoutButton");
-
-    const adminNav =
-        document.getElementById("adminNav");
-
-    if(currentUser){
-
-        login.style.display="none";
-        signup.style.display="none";
-        logoutBtn.style.display="block";
-
-        /*
-          Replace this with a real role check
-          against Supabase profiles table.
-        */
-
-        if(
-            currentUser.email &&
-            currentUser.email.toLowerCase()
-                ==="admin@example.com"
-        ){
-
-            adminNav.style.display="block";
-
-        }
-
-    }else{
-
-        login.style.display="block";
-        signup.style.display="block";
-        logoutBtn.style.display="none";
-        adminNav.style.display="none";
-
-    }
-
-    renderFavorites();
-
-}
-
-function showAuthMessage(message){
-
-    const el =
-        document.getElementById("authMessage");
-
-    if(el){
-        el.textContent=message;
-    }
-
-}
-
-/* =========================================================
-   SUPABASE CONNECTION
-   ========================================================= */
-
-function setupSupabase(){
-
-    /*
-      This version intentionally uses the Supabase REST API
-      so the application remains a true single-file website.
-
-      Production tables can include:
-
-      profiles
-      favorites
-      news
-      site_settings
-      admin_logs
-
-      RLS should protect all user/admin operations.
-    */
-
-    if(
-        SUPABASE_URL!=="YOUR_SUPABASE_URL" &&
-        SUPABASE_ANON_KEY!=="YOUR_SUPABASE_ANON_KEY"
-    ){
-
-        console.log(
-            "CRYPTO//NEXUS :: SUPABASE READY"
-        );
-
-    }else{
-
-        console.log(
-            "CRYPTO//NEXUS :: DEMO MODE"
-        );
-
-    }
-
-}
-
-/* =========================================================
-   ADMIN
-   ========================================================= */
-
-function adminPanel(panel){
-
-    const content =
-        document.getElementById("adminContent");
-
-    if(panel==="overview"){
-
-        content.innerHTML=`
-
-            <div class="dashboard-grid">
-
-                <div class="stat">
-                    <div class="stat-label">
-                        TOTAL USERS
-                    </div>
-                    <div class="stat-value">
-                        --
-                    </div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-label">
-                        PUBLISHED NEWS
-                    </div>
-                    <div class="stat-value">
-                        --
-                    </div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-label">
-                        MARKET
-                    </div>
-                    <div class="stat-value">
-                        LIVE
-                    </div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-label">
-                        SYSTEM
-                    </div>
-                    <div class="stat-value">
-                        ONLINE
-                    </div>
-                </div>
-
-            </div>
-
-        `;
-
-    }
-
-    if(panel==="news"){
-
-        content.innerHTML=`
-
-            <div class="section-title">
-                NEWS CONTROL
-            </div>
-
-            <p class="section-description"
-               style="margin:15px 0">
-
-                Add, edit, publish and remove
-                crypto intelligence stories.
-
-            </p>
-
-            <button
-                class="btn btn-primary"
-                onclick="alert('Connect Supabase news table here.')">
-
-                + ADD NEWS STORY
-
-            </button>
-
-        `;
-
-    }
-
-    if(panel==="users"){
-
-        content.innerHTML=`
-
-            <div class="section-title">
-                USER MANAGEMENT
-            </div>
-
-            <p class="section-description"
-               style="margin:15px 0">
-
-                User management is protected through
-                Supabase authentication and RLS.
-
-            </p>
-
-            <div class="terminal">
-
-                <div class="terminal-line">
-                    <span>SECURITY:</span>
-                    Supabase RLS required
-                </div>
-
-                <div class="terminal-line">
-                    Admin operations must be performed
-                    only through authorized policies.
-                </div>
-
-            </div>
-
-        `;
-
-    }
-
-    if(panel==="settings"){
-
-        content.innerHTML=`
-
-            <div class="section-title">
-                SYSTEM SETTINGS
-            </div>
-
-            <div class="terminal">
-
-                MARKET API: CONNECTED<br><br>
-                SUPABASE: CONFIGURABLE<br><br>
-                NEWS ENGINE: READY<br><br>
-                UI ENGINE: ONLINE
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-/* =========================================================
-   PAGE NAVIGATION
-   ========================================================= */
-
-function showPage(page,button){
-
-    document.getElementById("homePage").style.display =
-        page==="home" ? "block":"none";
-
-    document.getElementById("favoritesPage").style.display =
-        page==="favorites" ? "block":"none";
-
-    document.getElementById("adminPage").style.display =
-        page==="admin" ? "block":"none";
-
-    if(page==="admin"){
-
-        if(!currentUser){
-
-            openAuth("login");
-            return;
-
-        }
-
-        document.querySelector(".admin").classList.add("active");
-
-    }
-
-    document.querySelectorAll(".nav-links button")
-        .forEach(btn=>btn.classList.remove("active"));
-
-    if(button){
-        button.classList.add("active");
-    }
-
-    window.scrollTo({
-        top:0,
-        behavior:"smooth"
-    });
-
-}
-
-function scrollToSection(id){
-
-    showPage("home");
-
-    setTimeout(()=>{
-
-        const element =
-            document.getElementById(id);
-
-        if(element){
-
-            element.scrollIntoView({
-                behavior:"smooth"
-            });
-
-        }
-
-    },100);
-
-}
-
-function toggleMobileMenu(){
-
-    document
-        .getElementById("navLinks")
-        .classList.toggle("show");
-
-}
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
-function formatUSD(value){
-
-    const number=Number(value);
-
-    if(!Number.isFinite(number)){
-        return "$--";
-    }
-
-    if(number>=1000){
-
-        return "$"+
-            number.toLocaleString(
-                "en-US",
-                {
-                    maximumFractionDigits:0
-                }
-            );
-
-    }
-
-    if(number>=1){
-
-        return "$"+
-            number.toLocaleString(
-                "en-US",
-                {
-                    maximumFractionDigits:2
-                }
-            );
-
-    }
-
-    return "$"+
-        number.toLocaleString(
-            "en-US",
-            {
-                maximumFractionDigits:6
-            }
-        );
-
-}
-
-function escapeHTML(value){
-
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-function escapeAttr(value){
-
-    return String(value ?? "")
-        .replace(/'/g,"\\'")
-        .replace(/"/g,"&quot;");
-
-}
-
-/* =========================================================
-   AUTO MARKET REFRESH
-   ========================================================= */
-
-setInterval(()=>{
-
-    refreshMarket();
-
-},120000);
-
-/* =========================================================
-   KEYBOARD SHORTCUT
-   ========================================================= */
-
-document.addEventListener("keydown",event=>{
-
-    if(event.key==="Escape"){
-
-        document.querySelectorAll(".modal")
-            .forEach(modal=>{
-                modal.classList.remove("show");
-            });
-
-    }
-
-});
-
-</script>
-
-<!-- =========================================================
-     FOOTER
-     ========================================================= -->
+</div>
 
 <footer>
 
@@ -2597,6 +1482,2842 @@ SYSTEM ONLINE
 </div>
 
 </footer>
+
+<script>
+
+/* =========================================================
+   SUPABASE CONFIGURATION
+   ========================================================= */
+
+const SUPABASE_URL =
+"https://mmwcqrssgfmlunpzkghl.supabase.co";
+
+const SUPABASE_ANON_KEY =
+"sb_publishable_hyvqdNDdX-NGg-B7KMzD1A_KxmzMsvW";
+
+const MARKET_API =
+"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false";
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let currentUser = null;
+let currentSession = null;
+let currentProfile = null;
+
+let authMode = "login";
+
+let favorites =
+JSON.parse(localStorage.getItem("cryptoFavorites") || "[]");
+
+let marketData = [];
+
+let allNews = [];
+let categories = [];
+
+/* =========================================================
+   FALLBACK MARKET
+   ========================================================= */
+
+const fallbackCoins = [
+
+{
+id:"bitcoin",
+name:"Bitcoin",
+symbol:"BTC",
+current_price:118420,
+price_change_percentage_24h:2.31
+},
+
+{
+id:"ethereum",
+name:"Ethereum",
+symbol:"ETH",
+current_price:4620,
+price_change_percentage_24h:1.82
+},
+
+{
+id:"tether",
+name:"Tether",
+symbol:"USDT",
+current_price:1,
+price_change_percentage_24h:0.01
+},
+
+{
+id:"binancecoin",
+name:"BNB",
+symbol:"BNB",
+current_price:824,
+price_change_percentage_24h:-0.43
+},
+
+{
+id:"solana",
+name:"Solana",
+symbol:"SOL",
+current_price:198,
+price_change_percentage_24h:-0.72
+},
+
+{
+id:"ripple",
+name:"XRP",
+symbol:"XRP",
+current_price:3.12,
+price_change_percentage_24h:4.21
+},
+
+{
+id:"dogecoin",
+name:"Dogecoin",
+symbol:"DOGE",
+current_price:.24,
+price_change_percentage_24h:2.92
+},
+
+{
+id:"cardano",
+name:"Cardano",
+symbol:"ADA",
+current_price:.91,
+price_change_percentage_24h:-1.12
+}
+
+];
+
+/* =========================================================
+   INITIALIZATION
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", async ()=>{
+
+createMatrix();
+
+marketData = fallbackCoins;
+
+renderMarket();
+
+renderTicker();
+
+await restoreSession();
+
+await loadCategories();
+
+await loadNews();
+
+});
+
+/* =========================================================
+   MATRIX
+   ========================================================= */
+
+function createMatrix(){
+
+const matrix =
+document.getElementById("matrix");
+
+const chars =
+"01010110100101010101011001100110101";
+
+for(let i=0;i<65;i++){
+
+const span=document.createElement("span");
+
+span.textContent =
+Array.from(
+{length:Math.floor(Math.random()*20)+8},
+()=>
+chars[Math.floor(Math.random()*chars.length)]
+).join("");
+
+span.style.left =
+Math.random()*100+"%";
+
+span.style.animationDuration =
+(Math.random()*8+5)+"s";
+
+span.style.animationDelay =
+-(Math.random()*10)+"s";
+
+matrix.appendChild(span);
+
+}
+
+}
+
+/* =========================================================
+   SUPABASE REQUEST HELPER
+   ========================================================= */
+
+async function supabaseRequest(
+endpoint,
+options={}
+){
+
+const headers = {
+
+"apikey":SUPABASE_ANON_KEY,
+
+"Content-Type":"application/json",
+
+...(currentSession?.access_token
+? {
+"Authorization":
+"Bearer "+currentSession.access_token
+}
+:
+{
+"Authorization":
+"Bearer "+SUPABASE_ANON_KEY
+}
+),
+
+...(options.headers || {})
+
+};
+
+const response =
+await fetch(
+SUPABASE_URL+endpoint,
+{
+...options,
+headers
+}
+);
+
+const text =
+await response.text();
+
+let data=null;
+
+try{
+data=text ? JSON.parse(text):null;
+}catch(e){
+data=text;
+}
+
+if(!response.ok){
+
+let message =
+data?.message ||
+data?.error_description ||
+data?.hint ||
+data?.error ||
+"Supabase request failed";
+
+throw new Error(message);
+
+}
+
+return data;
+
+}
+
+/* =========================================================
+   AUTH
+   ========================================================= */
+
+function openAuth(mode){
+
+authMode=mode;
+
+document
+.getElementById("authModal")
+.classList.add("show");
+
+updateAuthUI();
+
+}
+
+function closeModal(id){
+
+document
+.getElementById(id)
+.classList.remove("show");
+
+}
+
+function toggleAuthMode(){
+
+authMode =
+authMode==="login"
+? "signup"
+: "login";
+
+updateAuthUI();
+
+}
+
+function updateAuthUI(){
+
+const title =
+document.getElementById("authTitle");
+
+const submit =
+document.getElementById("authSubmit");
+
+const toggle =
+document.getElementById("authToggle");
+
+if(authMode==="login"){
+
+title.textContent =
+"AUTHENTICATE // LOGIN";
+
+submit.textContent =
+"CONNECT TO NETWORK";
+
+toggle.textContent =
+"Create new account";
+
+}else{
+
+title.textContent =
+"CREATE // ACCOUNT";
+
+submit.textContent =
+"CREATE ACCOUNT";
+
+toggle.textContent =
+"Already have an account? Login";
+
+}
+
+showAuthMessage("");
+
+}
+
+async function handleAuth(event){
+
+event.preventDefault();
+
+const email =
+document.getElementById("authEmail")
+.value.trim();
+
+const password =
+document.getElementById("authPassword")
+.value;
+
+try{
+
+showAuthMessage(
+"CONNECTING TO SUPABASE..."
+);
+
+let data;
+
+if(authMode==="signup"){
+
+data =
+await supabaseRequest(
+"/auth/v1/signup",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_ANON_KEY
+},
+body:JSON.stringify({
+email,
+password
+})
+}
+);
+
+showAuthMessage(
+"ACCOUNT CREATED // Check your email if confirmation is enabled."
+);
+
+if(data?.session){
+
+await setSession(data);
+
+closeModal("authModal");
+
+}
+
+}else{
+
+data =
+await supabaseRequest(
+"/auth/v1/token?grant_type=password",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_ANON_KEY
+},
+body:JSON.stringify({
+email,
+password
+})
+}
+);
+
+await setSession(data);
+
+closeModal("authModal");
+
+}
+
+}catch(error){
+
+showAuthMessage(
+"ERROR // "+error.message
+);
+
+}
+
+}
+
+async function setSession(data){
+
+currentSession=data;
+
+currentUser=data.user || null;
+
+if(data){
+
+localStorage.setItem(
+"supabaseSession",
+JSON.stringify(data)
+);
+
+}
+
+await loadProfile();
+
+updateUserUI();
+
+}
+
+async function restoreSession(){
+
+const stored =
+localStorage.getItem("supabaseSession");
+
+if(!stored){
+
+updateUserUI();
+
+return;
+
+}
+
+try{
+
+const session =
+JSON.parse(stored);
+
+if(
+session &&
+session.access_token &&
+session.user
+){
+
+currentSession=session;
+
+currentUser=session.user;
+
+await loadProfile();
+
+updateUserUI();
+
+}else{
+
+clearSession();
+
+}
+
+}catch(error){
+
+console.error(error);
+
+clearSession();
+
+}
+
+}
+
+function clearSession(){
+
+currentUser=null;
+currentSession=null;
+currentProfile=null;
+
+localStorage.removeItem("supabaseSession");
+
+}
+
+async function loadProfile(){
+
+if(!currentUser){
+
+currentProfile=null;
+
+return;
+
+}
+
+try{
+
+const data =
+await supabaseRequest(
+"/rest/v1/profiles?id=eq."+encodeURIComponent(currentUser.id)+
+"&select=*",
+{
+method:"GET"
+}
+);
+
+currentProfile =
+Array.isArray(data)
+? data[0] || null
+: null;
+
+}catch(error){
+
+console.error(
+"Profile error:",
+error
+);
+
+currentProfile=null;
+
+}
+
+}
+
+async function logout(){
+
+try{
+
+if(currentSession?.access_token){
+
+await fetch(
+SUPABASE_URL+"/auth/v1/logout",
+{
+method:"POST",
+headers:{
+"apikey":SUPABASE_ANON_KEY,
+"Authorization":
+"Bearer "+currentSession.access_token
+}
+}
+);
+
+}
+
+}catch(error){
+
+console.log(error);
+
+}
+
+clearSession();
+
+updateUserUI();
+
+showPage("home");
+
+}
+
+function updateUserUI(){
+
+const login =
+document.getElementById("loginButton");
+
+const signup =
+document.getElementById("signupButton");
+
+const logoutBtn =
+document.getElementById("logoutButton");
+
+const adminNav =
+document.getElementById("adminNav");
+
+if(currentUser){
+
+login.style.display="none";
+
+signup.style.display="none";
+
+logoutBtn.style.display="block";
+
+if(
+currentProfile &&
+currentProfile.role==="admin" &&
+currentProfile.is_active===true
+){
+
+adminNav.style.display="block";
+
+}else{
+
+adminNav.style.display="none";
+
+}
+
+}else{
+
+login.style.display="block";
+
+signup.style.display="block";
+
+logoutBtn.style.display="none";
+
+adminNav.style.display="none";
+
+}
+
+renderFavorites();
+
+}
+
+/* =========================================================
+   AUTH MESSAGE
+   ========================================================= */
+
+function showAuthMessage(message){
+
+const el =
+document.getElementById("authMessage");
+
+if(el){
+
+el.textContent=message;
+
+}
+
+}
+
+/* =========================================================
+   ADMIN CHECK
+   ========================================================= */
+
+function isAdmin(){
+
+return !!(
+currentUser &&
+currentProfile &&
+currentProfile.role==="admin" &&
+currentProfile.is_active===true
+);
+
+}
+
+function requireAdmin(){
+
+if(!currentUser){
+
+openAuth("login");
+
+return false;
+
+}
+
+if(!isAdmin()){
+
+alert(
+"ACCESS DENIED // Administrator privileges required."
+);
+
+return false;
+
+}
+
+return true;
+
+}
+
+/* =========================================================
+   MARKET
+   ========================================================= */
+
+async function refreshMarket(){
+
+try{
+
+const response =
+await fetch(MARKET_API);
+
+if(!response.ok){
+
+throw new Error(
+"Market API unavailable"
+);
+
+}
+
+const data =
+await response.json();
+
+if(
+Array.isArray(data) &&
+data.length
+){
+
+marketData =
+data.slice(0,20);
+
+}
+
+}catch(error){
+
+console.log(
+"Using fallback market data."
+);
+
+}
+
+renderMarket();
+
+renderTicker();
+
+renderFavorites();
+
+}
+
+function renderMarket(){
+
+const grid =
+document.getElementById("marketGrid");
+
+if(!grid)return;
+
+grid.innerHTML="";
+
+marketData
+.slice(0,12)
+.forEach(coin=>{
+
+const change =
+Number(
+coin.price_change_percentage_24h || 0
+);
+
+const isFavorite =
+favorites.includes(coin.id);
+
+const card =
+document.createElement("div");
+
+card.className="coin-card";
+
+card.innerHTML=`
+
+<div class="coin-top">
+
+<div>
+
+<div class="coin-name">
+${escapeHTML(coin.name)}
+</div>
+
+<div class="coin-symbol">
+${escapeHTML(
+String(coin.symbol || "").toUpperCase()
+)}
+</div>
+
+</div>
+
+<button
+class="favorite ${isFavorite ? "active":""}"
+onclick="toggleFavorite('${escapeAttr(coin.id)}')">
+
+${isFavorite ? "★":"☆"}
+
+</button>
+
+</div>
+
+<div class="coin-price">
+${formatUSD(coin.current_price)}
+</div>
+
+<div class="coin-change ${change>=0?"up":"down"}">
+
+${change>=0?"▲":"▼"}
+${Math.abs(change).toFixed(2)}%
+
+<span style="color:#506873">
+24H
+</span>
+
+</div>
+
+<div class="mini-chart">
+
+<svg viewBox="0 0 200 45"
+preserveAspectRatio="none">
+
+<polyline
+points="0,35 20,30 40,37 60,21 80,27 100,15 120,24 140,12 160,20 180,9 200,14"
+fill="none"
+stroke="${change>=0
+? "rgba(0,255,156,.65)"
+: "rgba(255,56,100,.65)"}"
+stroke-width="1.5"/>
+
+</svg>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+}
+
+function renderTicker(){
+
+const track =
+document.getElementById("tickerTrack");
+
+if(!track)return;
+
+const items =
+[
+...marketData.slice(0,10),
+...marketData.slice(0,10)
+];
+
+track.innerHTML="";
+
+items.forEach(coin=>{
+
+const change =
+Number(
+coin.price_change_percentage_24h || 0
+);
+
+const item =
+document.createElement("div");
+
+item.className="ticker-item";
+
+item.innerHTML=`
+
+<span class="ticker-symbol">
+${escapeHTML(
+String(coin.symbol || "").toUpperCase()
+)}
+</span>
+
+&nbsp;
+
+${formatUSD(coin.current_price)}
+
+&nbsp;
+
+<span class="${change>=0?"up":"down"}">
+${change>=0?"+":""}${change.toFixed(2)}%
+</span>
+
+`;
+
+track.appendChild(item);
+
+});
+
+}
+
+/* =========================================================
+   FAVORITES
+   ========================================================= */
+
+function toggleFavorite(id){
+
+if(!currentUser){
+
+openAuth("login");
+
+showAuthMessage(
+"LOGIN REQUIRED // Connect your account to save favorites."
+);
+
+return;
+
+}
+
+if(favorites.includes(id)){
+
+favorites =
+favorites.filter(
+item=>item!==id
+);
+
+}else{
+
+favorites.push(id);
+
+}
+
+localStorage.setItem(
+"cryptoFavorites",
+JSON.stringify(favorites)
+);
+
+renderMarket();
+
+renderFavorites();
+
+}
+
+function renderFavorites(){
+
+const container =
+document.getElementById("favoritesContainer");
+
+if(!container)return;
+
+if(!currentUser){
+
+container.innerHTML=`
+
+<div class="terminal">
+
+<div class="terminal-line">
+<span>ACCESS DENIED</span>
+</div>
+
+<div class="terminal-line">
+Authentication required.
+</div>
+
+<button
+class="btn btn-primary"
+onclick="openAuth('login')"
+style="margin-top:15px">
+
+CONNECT ACCOUNT
+
+</button>
+
+</div>
+
+`;
+
+return;
+
+}
+
+const coins =
+marketData.filter(
+coin=>favorites.includes(coin.id)
+);
+
+if(!coins.length){
+
+container.innerHTML=`
+
+<div class="terminal">
+
+<div class="terminal-line">
+<span>WATCHLIST EMPTY</span>
+</div>
+
+<div class="terminal-line">
+Add cryptocurrencies from the market.
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+container.innerHTML=`
+
+<div class="market-grid">
+
+${coins.map(coin=>{
+
+const change =
+Number(
+coin.price_change_percentage_24h || 0
+);
+
+return `
+
+<div class="coin-card">
+
+<div class="coin-name">
+${escapeHTML(coin.name)}
+</div>
+
+<div class="coin-symbol">
+${escapeHTML(
+String(coin.symbol).toUpperCase()
+)}
+</div>
+
+<div class="coin-price">
+${formatUSD(coin.current_price)}
+</div>
+
+<div class="${change>=0?"up":"down"}">
+${change>=0?"+":""}
+${change.toFixed(2)}%
+</div>
+
+</div>
+
+`;
+
+}).join("")}
+
+</div>
+
+`;
+
+}
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
+async function loadCategories(){
+
+try{
+
+const data =
+await supabaseRequest(
+"/rest/v1/categories?is_active=eq.true&select=*&order=name.asc",
+{
+method:"GET"
+}
+);
+
+categories =
+Array.isArray(data)
+? data
+: [];
+
+populateCategorySelect();
+
+}catch(error){
+
+console.error(
+"Category loading error:",
+error
+);
+
+}
+
+}
+
+function populateCategorySelect(){
+
+const select =
+document.getElementById("newsCategory");
+
+if(!select)return;
+
+select.innerHTML =
+`<option value="">NO CATEGORY</option>`;
+
+categories.forEach(category=>{
+
+const option =
+document.createElement("option");
+
+option.value=category.id;
+
+option.textContent=
+category.name;
+
+select.appendChild(option);
+
+});
+
+}
+
+/* =========================================================
+   PUBLIC NEWS
+   ========================================================= */
+
+async function loadNews(){
+
+const grid =
+document.getElementById("newsGrid");
+
+const live =
+document.getElementById("liveFeed");
+
+if(!grid || !live)return;
+
+grid.innerHTML =
+`<div class="loading">LOADING NEWS...</div>`;
+
+try{
+
+const data =
+await supabaseRequest(
+"/rest/v1/news?status=eq.published&select=*,categories(name,slug)&order=published_at.desc&limit=20",
+{
+method:"GET"
+}
+);
+
+allNews =
+Array.isArray(data)
+? data
+: [];
+
+renderPublicNews(allNews);
+
+}catch(error){
+
+console.error(
+"News loading error:",
+error
+);
+
+renderFallbackNews();
+
+}
+
+}
+
+function renderPublicNews(news){
+
+const grid =
+document.getElementById("newsGrid");
+
+const live =
+document.getElementById("liveFeed");
+
+if(!grid || !live)return;
+
+if(!news.length){
+
+grid.innerHTML=`
+
+<div class="terminal">
+
+<div class="terminal-line">
+<span>NO PUBLISHED NEWS</span>
+</div>
+
+<div class="terminal-line">
+The intelligence desk has not published any stories yet.
+</div>
+
+</div>
+
+`;
+
+live.innerHTML="";
+
+return;
+
+}
+
+grid.innerHTML="";
+
+news.forEach(item=>{
+
+const card =
+document.createElement("article");
+
+card.className="news-card";
+
+const category =
+item.categories?.name ||
+"CRYPTO";
+
+const published =
+item.published_at
+? new Date(item.published_at)
+.toLocaleDateString()
+: "";
+
+let imageHTML="";
+
+if(item.image_url){
+
+imageHTML=`
+
+<img
+class="news-image"
+src="${escapeAttr(item.image_url)}"
+alt="${escapeHTML(item.title)}"
+onerror="this.style.display='none'">
+
+`;
+
+}
+
+card.innerHTML=`
+
+${imageHTML}
+
+<div class="news-category">
+${escapeHTML(category)}
+${item.breaking ? " // BREAKING":""}
+</div>
+
+<h3>
+${escapeHTML(item.title)}
+</h3>
+
+<p>
+${escapeHTML(item.excerpt || "")}
+</p>
+
+<div class="news-meta">
+
+<span>
+${escapeHTML(item.source_name || "CRYPTO//NEXUS")}
+</span>
+
+<span>
+${escapeHTML(published)}
+</span>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+live.innerHTML="";
+
+news.slice(0,8).forEach(item=>{
+
+const liveItem =
+document.createElement("div");
+
+liveItem.className="live-item";
+
+liveItem.innerHTML=`
+
+<span class="live-dot"></span>
+${escapeHTML(item.title)}
+
+`;
+
+live.appendChild(liveItem);
+
+});
+
+}
+
+function renderFallbackNews(){
+
+const fallback=[
+
+{
+category:"BITCOIN",
+title:"Bitcoin market intelligence is currently being updated",
+description:"The CRYPTO//NEXUS intelligence feed is connecting to the database."
+},
+
+{
+category:"ETHEREUM",
+title:"Ethereum ecosystem intelligence",
+description:"Ethereum developments will appear here once published by the editorial team."
+},
+
+{
+category:"REGULATION",
+title:"Global cryptocurrency regulation",
+description:"Regulatory developments remain an important theme for digital asset markets."
+},
+
+{
+category:"BLOCKCHAIN",
+title:"Blockchain infrastructure continues developing",
+description:"Blockchain technology continues expanding across multiple applications."
+}
+
+];
+
+const grid =
+document.getElementById("newsGrid");
+
+const live =
+document.getElementById("liveFeed");
+
+grid.innerHTML="";
+
+fallback.forEach(item=>{
+
+const card =
+document.createElement("article");
+
+card.className="news-card";
+
+card.innerHTML=`
+
+<div class="news-category">
+${item.category}
+</div>
+
+<h3>
+${escapeHTML(item.title)}
+</h3>
+
+<p>
+${escapeHTML(item.description)}
+</p>
+
+<div class="news-meta">
+<span>CRYPTO//NEXUS</span>
+<span>LIVE</span>
+</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+live.innerHTML="";
+
+}
+
+/* =========================================================
+   ADMIN DASHBOARD
+   ========================================================= */
+
+async function loadAdminOverview(){
+
+if(!requireAdmin())return;
+
+try{
+
+const users =
+await supabaseRequest(
+"/rest/v1/profiles?select=id",
+{
+method:"GET"
+}
+);
+
+const news =
+await supabaseRequest(
+"/rest/v1/news?select=id,status",
+{
+method:"GET"
+}
+);
+
+const totalUsers =
+Array.isArray(users)
+? users.length
+: 0;
+
+const totalNews =
+Array.isArray(news)
+? news.length
+: 0;
+
+const published =
+Array.isArray(news)
+? news.filter(
+n=>n.status==="published"
+).length
+: 0;
+
+const drafts =
+Array.isArray(news)
+? news.filter(
+n=>n.status==="draft"
+).length
+: 0;
+
+document.getElementById("adminUsers")
+.textContent=totalUsers;
+
+document.getElementById("adminNews")
+.textContent=totalNews;
+
+document.getElementById("adminPublished")
+.textContent=published;
+
+document.getElementById("adminDrafts")
+.textContent=drafts;
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+/* =========================================================
+   ADMIN PANELS
+   ========================================================= */
+
+async function adminPanel(panel,button){
+
+if(!requireAdmin())return;
+
+document
+.querySelectorAll(".admin-sidebar button")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+if(button){
+
+button.classList.add("active");
+
+}
+
+const content =
+document.getElementById("adminContent");
+
+if(panel==="overview"){
+
+content.innerHTML=`
+
+<div class="dashboard-grid">
+
+<div class="stat">
+<div class="stat-label">TOTAL USERS</div>
+<div class="stat-value" id="adminUsers">--</div>
+</div>
+
+<div class="stat">
+<div class="stat-label">NEWS ITEMS</div>
+<div class="stat-value" id="adminNews">--</div>
+</div>
+
+<div class="stat">
+<div class="stat-label">PUBLISHED</div>
+<div class="stat-value" id="adminPublished">--</div>
+</div>
+
+<div class="stat">
+<div class="stat-label">DRAFTS</div>
+<div class="stat-value" id="adminDrafts">--</div>
+</div>
+
+</div>
+
+<div class="terminal">
+
+<div class="terminal-line">
+<span>ADMIN:</span> Authorized
+</div>
+
+<div class="terminal-line">
+<span>DATABASE:</span> Supabase PostgreSQL
+</div>
+
+<div class="terminal-line">
+<span>SECURITY:</span> Row Level Security
+</div>
+
+<div class="terminal-line">
+<span>NEWS:</span> Connected
+</div>
+
+</div>
+
+`;
+
+await loadAdminOverview();
+
+}
+
+if(panel==="news"){
+
+await renderAdminNews();
+
+}
+
+if(panel==="categories"){
+
+await renderAdminCategories();
+
+}
+
+if(panel==="users"){
+
+await renderAdminUsers();
+
+}
+
+if(panel==="settings"){
+
+await renderAdminSettings();
+
+}
+
+if(panel==="logs"){
+
+await renderAdminLogs();
+
+}
+
+}
+
+/* =========================================================
+   ADMIN NEWS
+   ========================================================= */
+
+async function renderAdminNews(){
+
+if(!requireAdmin())return;
+
+const content =
+document.getElementById("adminContent");
+
+content.innerHTML=`
+
+<div class="section-header">
+
+<div>
+
+<div class="section-title">
+NEWS CONTROL
+</div>
+
+<div class="section-description">
+Create, edit, publish and manage intelligence stories.
+</div>
+
+</div>
+
+<button
+class="btn btn-primary"
+onclick="openNewsEditor()">
+
++ ADD NEWS STORY
+
+</button>
+
+</div>
+
+<div class="search-row">
+
+<input
+id="adminNewsSearch"
+placeholder="SEARCH NEWS..."
+oninput="filterAdminNews()">
+
+<select
+id="adminNewsStatusFilter"
+onchange="filterAdminNews()">
+
+<option value="">ALL STATUS</option>
+<option value="published">PUBLISHED</option>
+<option value="draft">DRAFT</option>
+<option value="archived">ARCHIVED</option>
+
+</select>
+
+</div>
+
+<div id="adminNewsTable">
+<div class="loading">
+LOADING NEWS...
+</div>
+</div>
+
+`;
+
+await fetchAdminNews();
+
+}
+
+async function fetchAdminNews(){
+
+try{
+
+const data =
+await supabaseRequest(
+"/rest/v1/news?select=*,categories(name)&order=created_at.desc",
+{
+method:"GET"
+}
+);
+
+allNews =
+Array.isArray(data)
+? data
+: [];
+
+renderAdminNewsTable(allNews);
+
+}catch(error){
+
+document.getElementById(
+"adminNewsTable"
+).innerHTML=`
+
+<div class="alert error">
+ERROR // ${escapeHTML(error.message)}
+</div>
+
+`;
+
+}
+
+}
+
+function renderAdminNewsTable(news){
+
+const container =
+document.getElementById("adminNewsTable");
+
+if(!container)return;
+
+if(!news.length){
+
+container.innerHTML=`
+
+<div class="terminal">
+
+<div class="terminal-line">
+<span>NO NEWS FOUND</span>
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+container.innerHTML=`
+
+<div class="admin-table-wrap">
+
+<table class="admin-table">
+
+<thead>
+
+<tr>
+
+<th>TITLE</th>
+<th>CATEGORY</th>
+<th>STATUS</th>
+<th>FEATURED</th>
+<th>DATE</th>
+<th>ACTIONS</th>
+
+</tr>
+
+</thead>
+
+<tbody id="adminNewsRows"></tbody>
+
+</table>
+
+</div>
+
+`;
+
+const tbody =
+document.getElementById("adminNewsRows");
+
+news.forEach(item=>{
+
+const row =
+document.createElement("tr");
+
+const statusClass =
+item.status==="published"
+? "status-published"
+: item.status==="draft"
+? "status-draft"
+: "status-archived";
+
+row.innerHTML=`
+
+<td>
+<strong>
+${escapeHTML(item.title)}
+</strong>
+</td>
+
+<td>
+${escapeHTML(
+item.categories?.name || "—"
+)}
+</td>
+
+<td>
+
+<span class="status-badge ${statusClass}">
+${escapeHTML(
+item.status.toUpperCase()
+)}
+</span>
+
+</td>
+
+<td>
+${item.featured ? "YES":"NO"}
+</td>
+
+<td>
+${new Date(item.created_at)
+.toLocaleDateString()}
+</td>
+
+<td>
+
+<div class="admin-actions">
+
+<button
+class="btn small-btn"
+onclick="openNewsEditor(${item.id})">
+EDIT
+</button>
+
+<button
+class="btn small-btn"
+onclick="toggleNewsStatus(${item.id},'${item.status}')">
+${item.status==="published"
+? "UNPUBLISH"
+: "PUBLISH"}
+</button>
+
+<button
+class="btn btn-danger small-btn"
+onclick="deleteNews(${item.id})">
+DELETE
+</button>
+
+</div>
+
+</td>
+
+`;
+
+tbody.appendChild(row);
+
+});
+
+}
+
+function filterAdminNews(){
+
+const search =
+(
+document.getElementById(
+"adminNewsSearch"
+)?.value || ""
+).toLowerCase();
+
+const status =
+document.getElementById(
+"adminNewsStatusFilter"
+)?.value || "";
+
+const filtered =
+allNews.filter(item=>{
+
+const matchesSearch =
+!search ||
+String(item.title || "")
+.toLowerCase()
+.includes(search) ||
+String(item.excerpt || "")
+.toLowerCase()
+.includes(search);
+
+const matchesStatus =
+!status ||
+item.status===status;
+
+return matchesSearch &&
+matchesStatus;
+
+});
+
+renderAdminNewsTable(filtered);
+
+}
+
+/* =========================================================
+   NEWS EDITOR
+   ========================================================= */
+
+async function openNewsEditor(id=null){
+
+if(!requireAdmin())return;
+
+await loadCategories();
+
+const modal =
+document.getElementById("newsModal");
+
+document.getElementById(
+"newsForm"
+).reset();
+
+document.getElementById(
+"newsId"
+).value="";
+
+document.getElementById(
+"newsModalTitle"
+).textContent =
+id
+? "EDIT NEWS STORY"
+: "CREATE NEWS STORY";
+
+document.getElementById(
+"newsFormMessage"
+).innerHTML="";
+
+if(id){
+
+try{
+
+const data =
+await supabaseRequest(
+"/rest/v1/news?id=eq."+encodeURIComponent(id)+
+"&select=*",
+{
+method:"GET"
+}
+);
+
+const item =
+Array.isArray(data)
+? data[0]
+: null;
+
+if(!item){
+
+alert("News article not found.");
+
+return;
+
+}
+
+document.getElementById(
+"newsId"
+).value=item.id;
+
+document.getElementById(
+"newsTitle"
+).value=item.title || "";
+
+document.getElementById(
+"newsSlug"
+).value=item.slug || "";
+
+document.getElementById(
+"newsCategory"
+).value=item.category_id || "";
+
+document.getElementById(
+"newsStatus"
+).value=item.status || "draft";
+
+document.getElementById(
+"newsSourceName"
+).value=item.source_name || "";
+
+document.getElementById(
+"newsSourceUrl"
+).value=item.source_url || "";
+
+document.getElementById(
+"newsImageUrl"
+).value=item.image_url || "";
+
+document.getElementById(
+"newsExcerpt"
+).value=item.excerpt || "";
+
+document.getElementById(
+"newsContent"
+).value=item.content || "";
+
+document.getElementById(
+"newsFeatured"
+).checked=!!item.featured;
+
+document.getElementById(
+"newsBreaking"
+).checked=!!item.breaking;
+
+}catch(error){
+
+alert(
+"ERROR // "+error.message
+);
+
+return;
+
+}
+
+}
+
+modal.classList.add("show");
+
+}
+
+async function saveNews(event){
+
+event.preventDefault();
+
+if(!requireAdmin())return;
+
+const id =
+document.getElementById("newsId").value;
+
+const title =
+document.getElementById("newsTitle")
+.value.trim();
+
+const slugInput =
+document.getElementById("newsSlug")
+.value.trim();
+
+const slug =
+slugInput ||
+slugify(title);
+
+const categoryValue =
+document.getElementById("newsCategory")
+.value;
+
+const status =
+document.getElementById("newsStatus")
+.value;
+
+const sourceName =
+document.getElementById("newsSourceName")
+.value.trim();
+
+const sourceUrl =
+document.getElementById("newsSourceUrl")
+.value.trim();
+
+const imageUrl =
+document.getElementById("newsImageUrl")
+.value.trim();
+
+const excerpt =
+document.getElementById("newsExcerpt")
+.value.trim();
+
+const content =
+document.getElementById("newsContent")
+.value.trim();
+
+const featured =
+document.getElementById("newsFeatured")
+.checked;
+
+const breaking =
+document.getElementById("newsBreaking")
+.checked;
+
+const payload={
+
+title,
+
+slug,
+
+category_id:
+categoryValue
+? Number(categoryValue)
+: null,
+
+source_name:
+sourceName || null,
+
+source_url:
+sourceUrl || null,
+
+image_url:
+imageUrl || null,
+
+excerpt:
+excerpt || null,
+
+content:
+content || null,
+
+status,
+
+featured,
+
+breaking,
+
+author_id:
+currentUser.id,
+
+published_at:
+status==="published"
+? new Date().toISOString()
+: null
+
+};
+
+const message =
+document.getElementById(
+"newsFormMessage"
+);
+
+message.innerHTML=`
+
+<div class="alert">
+SAVING TO SUPABASE...
+</div>
+
+`;
+
+try{
+
+let result;
+
+if(id){
+
+result =
+await supabaseRequest(
+"/rest/v1/news?id=eq."+encodeURIComponent(id),
+{
+method:"PATCH",
+headers:{
+"Prefer":"return=representation"
+},
+body:JSON.stringify(payload)
+}
+);
+
+await writeAdminLog(
+"update_news",
+"news",
+id,
+{
+title,
+status
+}
+);
+
+}else{
+
+result =
+await supabaseRequest(
+"/rest/v1/news",
+{
+method:"POST",
+headers:{
+"Prefer":"return=representation"
+},
+body:JSON.stringify(payload)
+}
+);
+
+const created =
+Array.isArray(result)
+? result[0]
+: result;
+
+await writeAdminLog(
+"create_news",
+"news",
+created?.id || "",
+{
+title,
+status
+}
+);
+
+}
+
+message.innerHTML=`
+
+<div class="alert success">
+NEWS SAVED SUCCESSFULLY.
+</div>
+
+`;
+
+setTimeout(async()=>{
+
+closeModal("newsModal");
+
+await loadNews();
+
+await renderAdminNews();
+
+},700);
+
+}catch(error){
+
+message.innerHTML=`
+
+<div class="alert error">
+ERROR // ${escapeHTML(error.message)}
+</div>
+
+`;
+
+}
+
+}
+
+/* =========================================================
+   PUBLISH / UNPUBLISH
+   ========================================================= */
+
+async function toggleNewsStatus(id,currentStatus){
+
+if(!requireAdmin())return;
+
+const newStatus =
+currentStatus==="published"
+? "draft"
+: "published";
+
+if(
+!confirm(
+newStatus==="published"
+? "Publish this news article?"
+: "Move this article back to draft?"
+)
+){
+
+return;
+
+}
+
+try{
+
+const payload={
+
+status:newStatus,
+
+published_at:
+newStatus==="published"
+? new Date().toISOString()
+: null
+
+};
+
+await supabaseRequest(
+"/rest/v1/news?id=eq."+encodeURIComponent(id),
+{
+method:"PATCH",
+headers:{
+"Prefer":"return=minimal"
+},
+body:JSON.stringify(payload)
+}
+);
+
+await writeAdminLog(
+newStatus==="published"
+? "publish_news"
+: "unpublish_news",
+"news",
+id,
+{}
+);
+
+await loadNews();
+
+await renderAdminNews();
+
+}catch(error){
+
+alert(
+"ERROR // "+error.message
+);
+
+}
+
+}
+
+/* =========================================================
+   DELETE NEWS
+   ========================================================= */
+
+async function deleteNews(id){
+
+if(!requireAdmin())return;
+
+if(
+!confirm(
+"Delete this news article permanently?"
+)
+){
+
+return;
+
+}
+
+try{
+
+await supabaseRequest(
+"/rest/v1/news?id=eq."+encodeURIComponent(id),
+{
+method:"DELETE",
+headers:{
+"Prefer":"return=minimal"
+}
+}
+);
+
+await writeAdminLog(
+"delete_news",
+"news",
+id,
+{}
+);
+
+await loadNews();
+
+await renderAdminNews();
+
+}catch(error){
+
+alert(
+"ERROR // "+error.message
+);
+
+}
+
+}
+
+/* =========================================================
+   CATEGORIES ADMIN
+   ========================================================= */
+
+async function renderAdminCategories(){
+
+if(!requireAdmin())return;
+
+const content =
+document.getElementById("adminContent");
+
+await loadCategories();
+
+content.innerHTML=`
+
+<div class="section-header">
+
+<div>
+
+<div class="section-title">
+CATEGORIES
+</div>
+
+<div class="section-description">
+Manage editorial news categories.
+</div>
+
+</div>
+
+</div>
+
+<div class="alert">
+Category creation/editing can be extended here.
+Your existing Supabase categories table is active.
+</div>
+
+<div class="admin-table-wrap">
+
+<table class="admin-table">
+
+<thead>
+
+<tr>
+<th>NAME</th>
+<th>SLUG</th>
+<th>STATUS</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+${categories.map(category=>`
+
+<tr>
+
+<td>
+${escapeHTML(category.name)}
+</td>
+
+<td>
+${escapeHTML(category.slug)}
+</td>
+
+<td>
+${category.is_active
+? "ACTIVE"
+: "INACTIVE"}
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+`;
+
+}
+
+/* =========================================================
+   USERS
+   ========================================================= */
+
+async function renderAdminUsers(){
+
+if(!requireAdmin())return;
+
+const content =
+document.getElementById("adminContent");
+
+content.innerHTML=`
+
+<div class="section-title">
+USER MANAGEMENT
+</div>
+
+<div class="section-description">
+Registered application profiles.
+</div>
+
+<div id="adminUsersTable">
+<div class="loading">
+LOADING USERS...
+</div>
+</div>
+
+`;
+
+try{
+
+const users =
+await supabaseRequest(
+"/rest/v1/profiles?select=id,email,full_name,role,is_active,created_at&order=created_at.desc",
+{
+method:"GET"
+}
+);
+
+document.getElementById(
+"adminUsersTable"
+).innerHTML=`
+
+<div class="admin-table-wrap">
+
+<table class="admin-table">
+
+<thead>
+
+<tr>
+<th>EMAIL</th>
+<th>NAME</th>
+<th>ROLE</th>
+<th>ACTIVE</th>
+<th>CREATED</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+${users.map(user=>`
+
+<tr>
+
+<td>
+${escapeHTML(user.email || "")}
+</td>
+
+<td>
+${escapeHTML(user.full_name || "")}
+</td>
+
+<td>
+${escapeHTML(user.role)}
+</td>
+
+<td>
+${user.is_active ? "YES":"NO"}
+</td>
+
+<td>
+${new Date(user.created_at)
+.toLocaleDateString()}
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+`;
+
+}catch(error){
+
+document.getElementById(
+"adminUsersTable"
+).innerHTML=`
+
+<div class="alert error">
+ERROR // ${escapeHTML(error.message)}
+</div>
+
+`;
+
+}
+
+}
+
+/* =========================================================
+   SETTINGS
+   ========================================================= */
+
+async function renderAdminSettings(){
+
+if(!requireAdmin())return;
+
+const content =
+document.getElementById("adminContent");
+
+content.innerHTML=`
+
+<div class="section-title">
+SYSTEM SETTINGS
+</div>
+
+<div class="section-description">
+Current CRYPTO//NEXUS configuration.
+</div>
+
+<div class="terminal">
+
+<div class="terminal-line">
+<span>SITE:</span> CRYPTO//NEXUS
+</div>
+
+<div class="terminal-line">
+<span>DATABASE:</span> Supabase
+</div>
+
+<div class="terminal-line">
+<span>AUTH:</span> Supabase Authentication
+</div>
+
+<div class="terminal-line">
+<span>RLS:</span> Enabled
+</div>
+
+<div class="terminal-line">
+<span>NEWS:</span> Database Connected
+</div>
+
+<div class="terminal-line">
+<span>MARKET:</span> CoinGecko
+</div>
+
+</div>
+
+`;
+
+}
+
+/* =========================================================
+   ADMIN LOGS
+   ========================================================= */
+
+async function renderAdminLogs(){
+
+if(!requireAdmin())return;
+
+const content =
+document.getElementById("adminContent");
+
+content.innerHTML=`
+
+<div class="section-title">
+ADMIN LOGS
+</div>
+
+<div class="section-description">
+Recent administrative activity.
+</div>
+
+<div id="adminLogsTable">
+<div class="loading">
+LOADING LOGS...
+</div>
+</div>
+
+`;
+
+try{
+
+const logs =
+await supabaseRequest(
+"/rest/v1/admin_logs?select=*&order=created_at.desc&limit=100",
+{
+method:"GET"
+}
+);
+
+document.getElementById(
+"adminLogsTable"
+).innerHTML=`
+
+<div class="admin-table-wrap">
+
+<table class="admin-table">
+
+<thead>
+
+<tr>
+<th>ACTION</th>
+<th>TARGET</th>
+<th>ID</th>
+<th>DATE</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+${logs.map(log=>`
+
+<tr>
+
+<td>
+${escapeHTML(log.action)}
+</td>
+
+<td>
+${escapeHTML(log.target_type || "")}
+</td>
+
+<td>
+${escapeHTML(log.target_id || "")}
+</td>
+
+<td>
+${new Date(log.created_at)
+.toLocaleString()}
+</td>
+
+</tr>
+
+`).join("")}
+
+</tbody>
+
+</table>
+
+</div>
+
+`;
+
+}catch(error){
+
+document.getElementById(
+"adminLogsTable"
+).innerHTML=`
+
+<div class="alert error">
+ERROR // ${escapeHTML(error.message)}
+</div>
+
+`;
+
+}
+
+}
+
+/* =========================================================
+   ADMIN LOG WRITER
+   ========================================================= */
+
+async function writeAdminLog(
+action,
+targetType,
+targetId,
+details
+){
+
+if(!isAdmin())return;
+
+try{
+
+await supabaseRequest(
+"/rest/v1/admin_logs",
+{
+method:"POST",
+headers:{
+"Prefer":"return=minimal"
+},
+body:JSON.stringify({
+
+admin_id:currentUser.id,
+
+action,
+
+target_type:targetType,
+
+target_id:String(targetId || ""),
+
+details:details || {}
+
+})
+}
+);
+
+}catch(error){
+
+console.error(
+"Admin log error:",
+error
+);
+
+}
+
+}
+
+/* =========================================================
+   PAGE NAVIGATION
+   ========================================================= */
+
+async function showPage(page,button){
+
+document.getElementById("homePage").style.display =
+page==="home"
+? "block"
+: "none";
+
+document.getElementById("favoritesPage").style.display =
+page==="favorites"
+? "block"
+: "none";
+
+document.getElementById("adminPage").style.display =
+page==="admin"
+? "block"
+: "none";
+
+if(page==="admin"){
+
+if(!currentUser){
+
+openAuth("login");
+
+document.getElementById("adminPage").style.display="none";
+
+return;
+
+}
+
+await loadProfile();
+
+if(!isAdmin()){
+
+document.getElementById("adminPage").style.display="none";
+
+alert(
+"ACCESS DENIED // Administrator privileges required."
+);
+
+return;
+
+}
+
+document
+.querySelector(".admin")
+.classList.add("active");
+
+await adminPanel("overview");
+
+}
+
+document
+.querySelectorAll(".nav-links button")
+.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+if(button){
+
+button.classList.add("active");
+
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+function scrollToSection(id){
+
+showPage("home");
+
+setTimeout(()=>{
+
+const element =
+document.getElementById(id);
+
+if(element){
+
+element.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+},100);
+
+}
+
+function toggleMobileMenu(){
+
+document
+.getElementById("navLinks")
+.classList.toggle("show");
+
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+function formatUSD(value){
+
+const number=Number(value);
+
+if(!Number.isFinite(number)){
+
+return "$--";
+
+}
+
+if(number>=1000){
+
+return "$"+
+number.toLocaleString(
+"en-US",
+{
+maximumFractionDigits:0
+}
+);
+
+}
+
+if(number>=1){
+
+return "$"+
+number.toLocaleString(
+"en-US",
+{
+maximumFractionDigits:2
+}
+);
+
+}
+
+return "$"+
+number.toLocaleString(
+"en-US",
+{
+maximumFractionDigits:6
+}
+);
+
+}
+
+function slugify(text){
+
+return String(text || "")
+.toLowerCase()
+.trim()
+.replace(/[^a-z0-9\s-]/g,"")
+.replace(/\s+/g,"-")
+.replace(/-+/g,"-");
+
+}
+
+function escapeHTML(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+function escapeAttr(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+/* =========================================================
+   AUTO MARKET REFRESH
+   ========================================================= */
+
+setInterval(()=>{
+
+refreshMarket();
+
+},120000);
+
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
+
+document.addEventListener(
+"keydown",
+event=>{
+
+if(event.key==="Escape"){
+
+document
+.querySelectorAll(".modal")
+.forEach(modal=>{
+modal.classList.remove("show");
+});
+
+}
+
+}
+);
+
+</script>
 
 </body>
 </html>
