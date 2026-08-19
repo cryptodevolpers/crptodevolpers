@@ -2968,7 +2968,467 @@ await renderAdminLogs();
 /* =========================================================
    ADMIN NEWS
    ========================================================= */
+/* =========================================================
+   CATEGORIES ADMIN
+   ========================================================= */
 
+async function renderAdminCategories(){
+
+    if(!requireAdmin()) return;
+
+    const content = document.getElementById("adminContent");
+
+    content.innerHTML = `
+
+        <div class="section-header">
+
+            <div>
+                <div class="section-title">
+                    CATEGORIES
+                </div>
+
+                <div class="section-description">
+                    Create, edit, activate and manage news categories.
+                </div>
+            </div>
+
+            <button
+                class="btn btn-primary"
+                onclick="openCategoryEditor()">
+                + ADD CATEGORY
+            </button>
+
+        </div>
+
+        <div id="categoryMessage"></div>
+
+        <div class="admin-table-wrap">
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>SLUG</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+
+                <tbody id="categoryRows">
+                    <tr>
+                        <td colspan="5" class="loading">
+                            LOADING CATEGORIES...
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    `;
+
+    await loadCategories();
+
+    renderCategoryRows();
+}
+
+
+/* =========================================================
+   CATEGORY ROWS
+   ========================================================= */
+
+function renderCategoryRows(){
+
+    const tbody =
+        document.getElementById("categoryRows");
+
+    if(!tbody) return;
+
+    if(!categories.length){
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    <div class="terminal">
+                        <div class="terminal-line">
+                            <span>NO CATEGORIES</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+    tbody.innerHTML = "";
+
+    categories.forEach(category => {
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+
+            <td>
+                ${escapeHTML(category.id)}
+            </td>
+
+            <td>
+                <strong>
+                    ${escapeHTML(category.name)}
+                </strong>
+            </td>
+
+            <td>
+                ${escapeHTML(category.slug || "")}
+            </td>
+
+            <td>
+
+                <span class="status-badge ${
+                    category.is_active
+                    ? "status-published"
+                    : "status-archived"
+                }">
+
+                    ${
+                        category.is_active
+                        ? "ACTIVE"
+                        : "INACTIVE"
+                    }
+
+                </span>
+
+            </td>
+
+            <td>
+
+                <div class="admin-actions">
+
+                    <button
+                        class="btn small-btn"
+                        onclick="openCategoryEditor(${category.id})">
+                        EDIT
+                    </button>
+
+                    <button
+                        class="btn small-btn"
+                        onclick="toggleCategory(${category.id}, ${category.is_active})">
+
+                        ${
+                            category.is_active
+                            ? "DISABLE"
+                            : "ACTIVATE"
+                        }
+
+                    </button>
+
+                    <button
+                        class="btn btn-danger small-btn"
+                        onclick="deleteCategory(${category.id})">
+                        DELETE
+                    </button>
+
+                </div>
+
+            </td>
+        `;
+
+        tbody.appendChild(row);
+
+    });
+
+}
+
+
+/* =========================================================
+   CATEGORY EDITOR
+   ========================================================= */
+
+async function openCategoryEditor(id = null){
+
+    if(!requireAdmin()) return;
+
+    let category = null;
+
+    if(id){
+
+        try{
+
+            const data =
+                await supabaseRequest(
+                    "/rest/v1/categories?id=eq." +
+                    encodeURIComponent(id) +
+                    "&select=*",
+                    {
+                        method:"GET"
+                    }
+                );
+
+            category =
+                Array.isArray(data)
+                ? data[0]
+                : null;
+
+        }catch(error){
+
+            alert(
+                "ERROR // " +
+                error.message
+            );
+
+            return;
+        }
+    }
+
+    const name =
+        prompt(
+            "CATEGORY NAME:",
+            category?.name || ""
+        );
+
+    if(name === null) return;
+
+    const cleanName = name.trim();
+
+    if(!cleanName){
+
+        alert("CATEGORY NAME IS REQUIRED.");
+
+        return;
+    }
+
+    const slug =
+        slugify(cleanName);
+
+    try{
+
+        if(id){
+
+            await supabaseRequest(
+                "/rest/v1/categories?id=eq." +
+                encodeURIComponent(id),
+                {
+                    method:"PATCH",
+
+                    headers:{
+                        "Prefer":
+                        "return=minimal"
+                    },
+
+                    body:JSON.stringify({
+
+                        name:cleanName,
+
+                        slug:slug
+
+                    })
+                }
+            );
+
+            await writeAdminLog(
+                "update_category",
+                "categories",
+                id,
+                {
+                    name:cleanName,
+                    slug:slug
+                }
+            );
+
+        }else{
+
+            const result =
+                await supabaseRequest(
+                    "/rest/v1/categories",
+                    {
+                        method:"POST",
+
+                        headers:{
+                            "Prefer":
+                            "return=representation"
+                        },
+
+                        body:JSON.stringify({
+
+                            name:cleanName,
+
+                            slug:slug,
+
+                            is_active:true
+
+                        })
+                    }
+                );
+
+            const created =
+                Array.isArray(result)
+                ? result[0]
+                : result;
+
+            await writeAdminLog(
+                "create_category",
+                "categories",
+                created?.id || "",
+                {
+                    name:cleanName,
+                    slug:slug
+                }
+            );
+        }
+
+        await loadCategories();
+
+        renderCategoryRows();
+
+        showCategoryMessage(
+            "CATEGORY SAVED SUCCESSFULLY.",
+            "success"
+        );
+
+    }catch(error){
+
+        showCategoryMessage(
+            "ERROR // " + error.message,
+            "error"
+        );
+    }
+}
+
+
+/* =========================================================
+   CATEGORY STATUS
+   ========================================================= */
+
+async function toggleCategory(id, currentStatus){
+
+    if(!requireAdmin()) return;
+
+    const newStatus =
+        !Boolean(currentStatus);
+
+    try{
+
+        await supabaseRequest(
+            "/rest/v1/categories?id=eq." +
+            encodeURIComponent(id),
+            {
+                method:"PATCH",
+
+                headers:{
+                    "Prefer":
+                    "return=minimal"
+                },
+
+                body:JSON.stringify({
+
+                    is_active:newStatus
+
+                })
+            }
+        );
+
+        await writeAdminLog(
+            newStatus
+            ? "activate_category"
+            : "disable_category",
+            "categories",
+            id,
+            {}
+        );
+
+        await loadCategories();
+
+        renderCategoryRows();
+
+    }catch(error){
+
+        alert(
+            "ERROR // " +
+            error.message
+        );
+    }
+}
+
+
+/* =========================================================
+   CATEGORY DELETE
+   ========================================================= */
+
+async function deleteCategory(id){
+
+    if(!requireAdmin()) return;
+
+    if(!confirm(
+        "Delete this category permanently?"
+    )){
+
+        return;
+    }
+
+    try{
+
+        await supabaseRequest(
+            "/rest/v1/categories?id=eq." +
+            encodeURIComponent(id),
+            {
+                method:"DELETE",
+
+                headers:{
+                    "Prefer":
+                    "return=minimal"
+                }
+            }
+        );
+
+        await writeAdminLog(
+            "delete_category",
+            "categories",
+            id,
+            {}
+        );
+
+        await loadCategories();
+
+        renderCategoryRows();
+
+    }catch(error){
+
+        alert(
+            "ERROR // " +
+            error.message
+        );
+    }
+}
+
+
+/* =========================================================
+   CATEGORY MESSAGE
+   ========================================================= */
+
+function showCategoryMessage(
+    message,
+    type = ""
+){
+
+    const element =
+        document.getElementById(
+            "categoryMessage"
+        );
+
+    if(!element) return;
+
+    element.innerHTML = `
+
+        <div class="alert ${type}">
+            ${escapeHTML(message)}
+        </div>
+
+    `;
+
+}
 async function renderAdminNews(){
 
 if(!requireAdmin())return;
