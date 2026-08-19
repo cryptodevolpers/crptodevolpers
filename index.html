@@ -2942,9 +2942,64 @@ await renderAdminNews();
 
 if(panel==="categories"){
 
-if(panel==="categories"){
-    await renderAdminCategories();
+async function renderAdminCategories(){
+
+    if(!requireAdmin()) return;
+
+    const content = document.getElementById("adminContent");
+
+    await loadCategories();
+
+    content.innerHTML = `
+
+        <div class="section-header">
+
+            <div>
+                <div class="section-title">
+                    CATEGORIES
+                </div>
+
+                <div class="section-description">
+                    Create, edit, activate and manage editorial categories.
+                </div>
+            </div>
+
+            <button
+                class="btn btn-primary"
+                onclick="openCategoryEditor()">
+                + ADD CATEGORY
+            </button>
+
+        </div>
+
+        <div id="categoryMessage"></div>
+
+        <div class="admin-table-wrap">
+
+            <table class="admin-table">
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>SLUG</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+
+                <tbody id="categoryRows"></tbody>
+
+            </table>
+
+        </div>
+    `;
+
+    renderCategoryRows();
 }
+
+}
+
 if(panel==="users"){
 
 await renderAdminUsers();
