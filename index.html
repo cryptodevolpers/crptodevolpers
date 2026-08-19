@@ -2937,15 +2937,17 @@ await loadAdminOverview();
 if(panel==="news"){
 
 await renderAdminNews();
+if (panel === "news") {
+        await renderAdminNews();
+    }
 
-}
+    if (panel === "categories") {
+        await renderAdminCategories();
+    }
+} // Closes the adminPanel function
 
-if(panel==="categories"){
-
-async function renderAdminCategories(){
-
-    if(!requireAdmin()) return;
-
+async function renderAdminCategories() {
+    if (!requireAdmin()) return;
     const content = document.getElementById("adminContent");
 
     await loadCategories();
