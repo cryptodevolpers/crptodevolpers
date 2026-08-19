@@ -2861,93 +2861,46 @@ console.error(error);
    ADMIN PANELS
    ========================================================= */
 
-async function adminPanel(panel,button){
-
-if(!requireAdmin())return;
-
-document
-.querySelectorAll(".admin-sidebar button")
-.forEach(btn=>{
-btn.classList.remove("active");
-});
-
-if(button){
-
-button.classList.add("active");
-
-}
-
-const content =
-document.getElementById("adminContent");
-
-if(panel==="overview"){
-
-content.innerHTML=`
-
-<div class="dashboard-grid">
-
-<div class="stat">
-<div class="stat-label">TOTAL USERS</div>
-<div class="stat-value" id="adminUsers">--</div>
-</div>
-
-<div class="stat">
-<div class="stat-label">NEWS ITEMS</div>
-<div class="stat-value" id="adminNews">--</div>
-</div>
-
-<div class="stat">
-<div class="stat-label">PUBLISHED</div>
-<div class="stat-value" id="adminPublished">--</div>
-</div>
-
-<div class="stat">
-<div class="stat-label">DRAFTS</div>
-<div class="stat-value" id="adminDrafts">--</div>
-</div>
-
-</div>
-
-<div class="terminal">
-
-<div class="terminal-line">
-<span>ADMIN:</span> Authorized
-</div>
-
-<div class="terminal-line">
-<span>DATABASE:</span> Supabase PostgreSQL
-</div>
-
-<div class="terminal-line">
-<span>SECURITY:</span> Row Level Security
-</div>
-
-<div class="terminal-line">
-<span>NEWS:</span> Connected
-</div>
-
-</div>
-
-`;
-
-await loadAdminOverview();
-
-}
-
-if(panel==="news"){
-
-await renderAdminNews();
-if (panel === "news") {
-        await renderAdminNews();
-    }
-
-    if (panel === "categories") {
-        await renderAdminCategories();
-    }
-} // Closes the adminPanel function
-
-async function renderAdminCategories() {
+async function adminPanel(panel, button) {
     if (!requireAdmin()) return;
+
+    document.querySelectorAll(".admin-sidebar button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    if (button) {
+        button.classList.add("active");
+    }
+
+    const content = document.getElementById("adminContent");
+
+    if (panel === "overview") {
+        content.innerHTML = `
+        <div class="dashboard-grid">
+            <div class="stat"><div class="stat-label">TOTAL USERS</div><div class="stat-value" id="adminUsers">--</div></div>
+            <div class="stat"><div class="stat-label">NEWS ITEMS</div><div class="stat-value" id="adminNews">--</div></div>
+            <div class="stat"><div class="stat-label">PUBLISHED</div><div class="stat-value" id="adminPublished">--</div></div>
+            <div class="stat"><div class="stat-label">DRAFTS</div><div class="stat-value" id="adminDrafts">--</div></div>
+        </div>
+        <div class="terminal">
+            <div class="terminal-line"><span>ADMIN:</span> Authorized</div>
+            <div class="terminal-line"><span>DATABASE:</span> Supabase PostgreSQL</div>
+            <div class="terminal-line"><span>SECURITY:</span> Row Level Security</div>
+            <div class="terminal-line"><span>NEWS:</span> Connected</div>
+        </div>`;
+        await loadAdminOverview();
+    } else if (panel === "news") {
+        await renderAdminNews();
+    } else if (panel === "categories") {
+        await renderAdminCategories();
+    } else if (panel === "users") {
+        await renderAdminUsers();
+    } else if (panel === "settings") {
+        await renderAdminSettings();
+    } else if (panel === "logs") {
+        await renderAdminLogs();
+    }
+}
     const content = document.getElementById("adminContent");
 
     await loadCategories();
